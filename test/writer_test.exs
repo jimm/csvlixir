@@ -23,7 +23,7 @@ defmodule CsvWriterTest do
   end
 
   def write_row_test(input, expected) do
-    row = CSV.write(input)
+    row = CSVLixir.write(input)
     assert row == expected
   end
 
@@ -31,7 +31,7 @@ defmodule CsvWriterTest do
     input = ["this row continues\non the next line"]
     expected = "\"this row continues\non the next line\""
 
-    row = CSV.write_row(input)
+    row = CSVLixir.write_row(input)
     assert row == expected
   end
 end

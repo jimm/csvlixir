@@ -1,4 +1,4 @@
-defmodule CSV.Reader do
+defmodule CSVLixir.Reader do
 
   @moduledoc """
   Reads a string or char_list and returns a list of lists whose values are

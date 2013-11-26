@@ -1,4 +1,4 @@
-defmodule CSV.Writer do
+defmodule CSVLixir.Writer do
 
   @moduledoc """
   The writer takes a list (write_row) or a list of lists (wrote) and returns

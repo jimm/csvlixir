@@ -24,7 +24,7 @@ defmodule CsvReaderTest do
   end
 
   def read_test(input, expected) do
-    [row] = CSV.read(input)
+    [row] = CSVLixir.read(input)
     expected_row = String.split(expected, "\t")
     assert row == expected_row
   end
@@ -33,7 +33,7 @@ defmodule CsvReaderTest do
     input = "\"this row continues\non the next line\""
     expected = "this row continues\non the next line"
 
-    [[row]] = CSV.read(input)
+    [[row]] = CSVLixir.read(input)
     assert row == expected
   end
 end

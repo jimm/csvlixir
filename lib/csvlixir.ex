@@ -1,4 +1,4 @@
-defmodule CSV do
+defmodule CSVLixir do
 
   @moduledoc """
 
@@ -11,9 +11,9 @@ defmodule CSV do
   From http://www.trapexit.org/Comma_Separated_Values
   """
 
-  def read(str_or_char_list), do: CSV.Reader.read(str_or_char_list)
+  def read(str_or_char_list), do: CSVLixir.Reader.read(str_or_char_list)
 
-  def write([h|t]) when is_list(h), do: CSV.Writer.write([h|t])
-  def write(list), do: CSV.Writer.write_row(list)
-  def write_row(list), do: CSV.Writer.write_row(list)
+  def write([h|t]) when is_list(h), do: CSVLixir.Writer.write([h|t])
+  def write(list), do: CSVLixir.Writer.write_row(list)
+  def write_row(list), do: CSVLixir.Writer.write_row(list)
 end
