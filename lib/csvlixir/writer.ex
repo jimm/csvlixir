@@ -18,7 +18,7 @@ defmodule CSVLixir.Writer do
   defp write_row([h|t], cols), do: write_row(t, [escape(h) | cols])
 
   defp escape(str) when is_binary(str) do
-    if Regex.match?(%r{[\",\n]}g, str) do
+    if Regex.match?(~r{[\",\n]}, str) do
       "\"" <> String.replace(str, "\"", "\"\"") <> "\""
     else
       str
