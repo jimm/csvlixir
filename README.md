@@ -12,7 +12,7 @@ same type.
     iex> CSVLixir.read('abc,def,"gh"",""i"')
     [['abc','def','gh","i"']]
 
-    iex> CSVLixir.read(File.read!("foo.csv")
+    iex> CSVLixir.read(File.read!("foo.csv"))
     [["row1", "has", "stuff"],["on", "many lines"]]
 
 The writer takes a list of lists (write) or a list (write_row) and returns a
@@ -37,6 +37,6 @@ write that to a file.
 
 # To Do
 
-I'm working on support for `Stream` I/O, but I'm having problems. The code
-for reading from a stream can't work on a line at time, since column data
-can span multiple lines. I can't seem to get
+I'm working on support for `Stream` I/O, but I'm having problems. CSVLixir
+needs to read data a character at a time, not a line at a time, since column data
+can span multiple lines. I may have to do my own buffering.
