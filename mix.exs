@@ -1,9 +1,9 @@
-defmodule Csv.Mixfile do
+defmodule CSVLixir.Mixfile do
   use Mix.Project
 
   def project do
     [ app: :csvlixir,
-      version: "1.0.0",
+      version: "2.0.0",
       deps: deps,
       description: description,
       package: package]
@@ -22,11 +22,8 @@ defmodule Csv.Mixfile do
 
   def description do
     """
-CSVLixir is a CSV reader/writer for Elixir. It operates on strings and char
-lists.
-
-The reader takes a string or a char list and returns a list of lists of the
-same type.
+CSVLixir is a CSV reader/writer for Elixir. It operates on files and
+strings.
 
 The writer takes a list of lists (write) or a list (write_row) and returns a
 string. The writer always works with strings.

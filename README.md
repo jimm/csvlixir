@@ -1,10 +1,13 @@
 # CSVLixir
 
-A CSV reader/writer for Elixir. Operates on strings and char lists. It'd be
-very simple to provide file I/O.
+A CSV reader/writer for Elixir. Operates on files or strings.
 
-The reader takes a string or a char list and returns a list of lists of the
-same type.
+## Files
+
+To read CSV data from a file, use =CSVLirix.read=. It takes a path to a file
+and returns a =Stream= that generates and returns rows of CSV data.
+
+    iex> CSVLirix.read("path/to/my.csv")
 
     iex> CSVLixir.read("abc,def,ghi\n123,456,789")
     [["abc","def","ghi"],["123","456","789"]]
@@ -35,8 +38,12 @@ string and pass it into `CSVLixir.read`. See the example above. The same
 goes for writing: use `CSVLixir.write` to create a string from data and
 write that to a file.
 
+# Changes from 1.0
+
+File and string. No longer supports char lists.
+
 # To Do
 
 I'm working on support for `Stream` I/O, but I'm having problems. CSVLixir
-needs to read data a character at a time, not a line at a time, since column data
-can span multiple lines. I may have to do my own buffering.
+needs to read data a character at a time, not a line at a time, since column
+data can span multiple lines. I may have to do my own buffering.

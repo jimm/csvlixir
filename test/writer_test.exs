@@ -1,4 +1,4 @@
-defmodule CsvWriterTest do
+defmodule CSVWriterTest do
   use ExUnit.Case
 
   @test_input [
