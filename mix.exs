@@ -36,7 +36,7 @@ strings. It can also take a single list and return a single CSV string.
   defp package do
     [
      licenses: ["Apache 2.0"],
-     links: %{"GitHub": "https://github.com/jimm/csvlixir"},
+     links: %{"GitHub" => "https://github.com/jimm/csvlixir"},
      contributors: ["Jim Menard"]
      ]
   end
