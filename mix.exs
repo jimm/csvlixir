@@ -25,8 +25,11 @@ defmodule CSVLixir.Mixfile do
 CSVLixir is a CSV reader/writer for Elixir. It operates on files and
 strings.
 
-The writer takes a list of lists (write) or a list (write_row) and returns a
-string. The writer always works with strings.
+The reader can read CSV files or CSV strings. Reading from files returns a
+stream of lists. Reading from strings returns a list of lists.
+
+The writer transforms a (possibly lazy) list of lists ito a stream of CSV
+strings. It can also take a single list and return a single CSV string.
 """
   end
 
