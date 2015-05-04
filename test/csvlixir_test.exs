@@ -23,6 +23,18 @@ defmodule CSVLixirTest do
     assert answer == [["abc"], ["def"]]
   end
 
+  test "read and parse multiple rows from a file with utf8" do
+    path = "/tmp/csvlixir_test.csv"
+    f = File.open!(path, [:write, :utf8])
+    IO.write(f, "abc\ndéf")
+    File.close(f)
+
+    answer = CSVLixir.read(path) |> Enum.to_list
+    File.rm(path)
+
+    assert answer == [["abc"], ["déf"]]
+  end
+
   test "write row" do
     assert CSVLixir.write_row(["a", "b", "c"]) == "a,b,c"
   end

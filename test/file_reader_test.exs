@@ -13,7 +13,7 @@ defmodule CSVFileReaderTest do
 
   defp create_input_file do
     path = "/tmp/file_reader_test.csv"
-    f = File.open!(path, [:write])
+    f = File.open!(path, [:write, :utf8])
     IO.write(f, CSVReaderTest.test_input)
     File.close(f)
     path
