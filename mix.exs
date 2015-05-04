@@ -36,7 +36,7 @@ string. The writer always works with strings.
   defp package do
     [
      licenses: ["Apache 2.0"],
-     links: %{"GitHub": "https://github.com/jimm/csvlixir"},
+     links: %{"GitHub" => "https://github.com/jimm/csvlixir"},
      contributors: ["Jim Menard"]
      ]
   end
