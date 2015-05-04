@@ -3,6 +3,8 @@ Code.require_file "test_helper.exs", __DIR__
 defmodule CSVLixirTest do
   use ExUnit.Case
 
+  doctest CSVLixir
+
   test "parse a string" do
     assert CSVLixir.parse("foo") == [["foo"]]
   end
@@ -35,15 +37,12 @@ defmodule CSVLixirTest do
     assert answer == [["abc"], ["déf"]]
   end
 
-  test "write row" do
-    assert CSVLixir.write_row(["a", "b", "c"]) == "a,b,c"
-  end
-
   test "write list of lists" do
-    assert CSVLixir.write([[123, 456], ["abc", "def"]]) == "123,456\nabc,def"
+    assert CSVLixir.write([[123, 456], ["abc", "def"]]) |> Enum.to_list ==
+      ["123,456\n", "abc,def\n"]
   end
 
   test "write list of values => write_row" do
-    assert CSVLixir.write(["a", "b", "c"]) == "a,b,c"
+    assert CSVLixir.write_row(["a", "b", "c"]) == "a,b,c\n"
   end
 end
