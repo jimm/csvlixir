@@ -4,7 +4,7 @@ defmodule CSVReaderTest do
   @test_input """
     hi!
     1,really,simple,row
-    a,é,third
+    a,é,unicodè chars
     
     ,
     ,,
@@ -19,7 +19,7 @@ defmodule CSVReaderTest do
   @test_expected [
     ["hi!"],
     ["1", "really", "simple", "row"],
-    ["a", "é", "third"],
+    ["a", "é", "unicodè chars"],
     [],
     ["", ""],
     ["", "", ""],

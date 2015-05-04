@@ -1,8 +1,7 @@
 defmodule CSVLixir.IOReader do
 
   @moduledoc """
-  Reads UTF-8 characters from a device and returns a Stream of lists of
-  strings.
+  Reads characters from a device and returns a Stream of lists of strings.
   """
 
   # after_fun gets run when the stream is done. It is passed the pid.

@@ -6,7 +6,7 @@ defmodule CSVLixir.FileReader do
   """
 
   def rows(path) do
-    f = File.open!(path, [:utf8])
+    f = File.open!(path)
     CSVLixir.IOReader.rows(f, &File.close/1)
   end
 end
