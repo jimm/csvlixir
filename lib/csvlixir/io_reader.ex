@@ -61,6 +61,8 @@ defmodule CSVLixir.IOReader do
   defp read_item_quoted(io, "\"", col) do
     case IO.read(io, 1) do
       "\"" -> read_item_quoted(io, IO.read(io, 1), col <> "\"")
+      "\n" -> read_item(io, "\n", col)
+      "\r" -> read_item(io, "\r", col)
       _ -> {col, IO.read(io, 1), :ok}
     end
   end

@@ -4,6 +4,8 @@ defmodule CSVReaderTest do
   @test_input """
     hi!
     1,really,simple,row
+    foo,"quoted",bar
+    a,b,"close quote at end of line"
     a,é,unicodè chars
     
     ,
@@ -19,6 +21,8 @@ defmodule CSVReaderTest do
   @test_expected [
     ["hi!"],
     ["1", "really", "simple", "row"],
+    ["foo", "quoted", "bar"],
+    ["a", "b" ,"close quote at end of line"],
     ["a", "é", "unicodè chars"],
     [],
     ["", ""],
