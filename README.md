@@ -70,7 +70,7 @@ Writing a line at a time:
     iex> File.read!("/tmp/csvlixir.csv")
     "garçon,waiter\nrésumé,resume\n"
 
-Don't forget to specify :utf8 when opening the file for writing if needed.
+Don't forget to specify `:utf8` when opening the file for writing if needed.
 (I often forget.)
 
 # Changes from 1.0
