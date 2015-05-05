@@ -2,6 +2,8 @@ defmodule CSVLixir.IOReader do
 
   @moduledoc """
   Reads characters from a device and returns a Stream of lists of strings.
+
+  See http://www.trapexit.org/Comma_Separated_Values
   """
 
   # after_fun gets run when the stream is done. It is passed the pid.

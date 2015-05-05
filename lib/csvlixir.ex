@@ -48,7 +48,7 @@ defmodule CSVLixir do
       iex> File.rm("/tmp/csvlixir.csv")
       :ok
   """
-  def parse(str), do: CSVLixir.Reader.read(str)
+  def parse(str), do: CSVLixir.StringReader.read(str)
 
   @doc """
   Returns a stream that transforms a list of lists into strings.

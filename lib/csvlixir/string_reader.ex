@@ -1,10 +1,7 @@
-defmodule CSVLixir.Reader do
+defmodule CSVLixir.StringReader do
 
   @moduledoc """
-  Reads a string or char_list and returns a list of lists whose values are
-  of the same type.
-
-  From http://www.trapexit.org/Comma_Separated_Values
+  Reads a string and returns a list of lists of strings.
   """
 
   def read(str) when is_binary(str) do
