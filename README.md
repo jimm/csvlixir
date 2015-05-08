@@ -76,3 +76,7 @@ Don't forget to specify `:utf8` when opening the file for writing if needed.
 # Changes from 1.0
 
 Adds reading from/writing to files. Removes support for char lists.
+
+# To Do
+
+- Allow different separator characters besides comma.
