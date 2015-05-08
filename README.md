@@ -80,3 +80,4 @@ Adds reading from/writing to files. Removes support for char lists.
 # To Do
 
 - Allow different separator characters besides comma.
+- Handle headers. Return map instead of list, perhaps?
