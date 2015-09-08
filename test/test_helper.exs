@@ -8,8 +8,8 @@ defmodule TestHelper do
     
     ,
     ,,
-    another row,"""nasty:,""","has, comma","has ""quotes""",has 'single quotes'
-    "has ""comma, in quotes""","has 'comma, in single quotes'","quotes "","" surrounding",,
+    another row,\"\"\"nasty:,\"\"\","has, comma","has ""quotes\"\"\",has 'single quotes'
+    "has ""comma, in quotes\"\"\","has 'comma, in single quotes'","quotes "","" surrounding",,
     "odd ""number of"" double ""quotes","two, yes two, commas","two, ""commas, second"" in quotes",,
     simple,row,"internal ""quote",,
     "this row continues
