@@ -13,6 +13,10 @@ defmodule CSVLixirTest do
     assert CSVLixir.parse("abc\ndef") == [["abc"], ["def"]]
   end
 
+  test "parse mixed line endings" do
+    assert CSVLixir.parse("a,\r\nb\n") == [["a", ""], ["b"]]
+  end
+
   test "read and parse multiple rows from a file" do
     path = "/tmp/csvlixir_test.csv"
     f = File.open!(path, [:write])

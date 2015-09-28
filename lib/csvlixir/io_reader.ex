@@ -10,7 +10,7 @@ defmodule CSVLixir.IOReader do
   def rows(pid, after_fun) do
     Stream.resource(
       fn ->
-        c = IO.read(pid, 1)
+        c = getc(pid)
         {pid, c}
       end,
       fn {pid, c} ->
@@ -36,37 +36,43 @@ defmodule CSVLixir.IOReader do
     end
   end    
 
-  defp read_item(io, ","), do: {"", IO.read(io, 1), :ok}
-  defp read_item(io, "\""), do: read_item_quoted(io, IO.read(io, 1), "")
-  defp read_item(io, "\n"), do: {"", IO.read(io, 1), :eol}
+  defp read_item(io, ","), do: {"", getc(io), :ok}
+  defp read_item(io, "\""), do: read_item_quoted(io, getc(io), "")
+  defp read_item(io, "\n"), do: {"", getc(io), :eol}
   defp read_item(io, "\r") do
-    c = IO.read(io, 1)
+    c = getc(io)
     case c do
-      "\n" -> read_item(io, IO.read(io, 1), :eol)
+      "\n" -> {"", getc(io), :eol}
       ch -> {"", ch, :eol}
     end
   end
-  defp read_item(io, c), do: read_item(io, IO.read(io, 1), c)
+  defp read_item(io, c), do: read_item(io, getc(io), c)
 
   defp read_item(_, :eof, col), do: {col, :eof, :eof}
-  defp read_item(io, ",", col), do: {col, IO.read(io, 1), :ok}
-  defp read_item(io, "\n", col), do: {col, IO.read(io, 1), :eol}
+  defp read_item(io, ",", col), do: {col, getc(io), :ok}
+  defp read_item(io, "\n", col), do: {col, getc(io), :eol}
   defp read_item(io, "\r", col) do
-    c = IO.read(io, 1)
+    c = getc(io)
     case c do
-      "\n" -> {col, IO.read(io, 1), :eol}
+      "\n" ->
+        {col, getc(io), :eol}
       ch -> {col, ch, :eol}
     end
   end
-  defp read_item(io, c, col), do: read_item(io, IO.read(io, 1), col <> c)
+  defp read_item(io, c, col), do: read_item(io, getc(io), col <> c)
 
   defp read_item_quoted(io, "\"", col) do
-    case IO.read(io, 1) do
-      "\"" -> read_item_quoted(io, IO.read(io, 1), col <> "\"")
+    case getc(io) do
+      "\"" -> read_item_quoted(io, getc(io), col <> "\"")
       "\n" -> read_item(io, "\n", col)
       "\r" -> read_item(io, "\r", col)
-      _ -> {col, IO.read(io, 1), :ok}
+      _ -> {col, getc(io), :ok}
     end
   end
-  defp read_item_quoted(io, c, col), do: read_item_quoted(io, IO.read(io, 1), col <> c)
+  defp read_item_quoted(io, c, col), do: read_item_quoted(io, getc(io), col <> c)
+
+  # This is a convenient place to put print statements when debugging.
+  defp getc(io) do
+    IO.read(io, 1)
+  end
 end

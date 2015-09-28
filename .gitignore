@@ -4,3 +4,4 @@ ebin
 erl_crash.dump
 *.beam
 doc
+tmp
