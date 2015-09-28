@@ -38,7 +38,7 @@ strings. It can also take a single list and return a single CSV string.
     [
      licenses: ["Apache 2.0"],
      links: %{"GitHub" => "https://github.com/jimm/csvlixir"},
-     contributors: ["Jim Menard"]
+     maintainers: ["Jim Menard"]
      ]
   end
 end
