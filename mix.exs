@@ -6,7 +6,11 @@ defmodule CSVLixir.Mixfile do
       version: "2.0.3",
       deps: deps,
       description: description,
-      package: package]
+      package: package,
+      name: "CSVLixir",
+      source_url: "https://github.com/jimm/csvlixir",
+      homepage_url: "https://github.com/jimm/csvlixir"
+    ]
   end
 
   # Configuration for the OTP application
