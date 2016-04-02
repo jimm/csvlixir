@@ -3,7 +3,7 @@ defmodule CSVLixir.Mixfile do
 
   def project do
     [ app: :csvlixir,
-      version: "2.0.2",
+      version: "2.0.3",
       deps: deps,
       description: description,
       package: package]
