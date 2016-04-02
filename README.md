@@ -12,11 +12,7 @@ def deps do
 end
 ```
 
-Update them:
-
-```sh-session
-$ mix deps.get
-```
+Run `mix deps.get`. Done.
 
 ## Reading
 
