@@ -2,10 +2,9 @@ defmodule CSVFileReaderTest do
   use ExUnit.Case
 
   test "file reader" do
-    path = create_input_file
+    path = create_input_file()
     expected = TestHelper.test_expected
-    actual = CSVLixir.FileReader.rows(path)
-      |> Enum.to_list
+    actual = path |> CSVLixir.FileReader.rows |> Enum.to_list
     File.rm(path)
 
     assert actual == expected

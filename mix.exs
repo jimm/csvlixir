@@ -3,10 +3,10 @@ defmodule CSVLixir.Mixfile do
 
   def project do
     [ app: :csvlixir,
-      version: "2.0.3",
-      deps: deps,
-      description: description,
-      package: package,
+      version: "2.0.4",
+      deps: deps(),
+      description: description(),
+      package: package(),
       name: "CSVLixir",
       source_url: "https://github.com/jimm/csvlixir",
       homepage_url: "https://github.com/jimm/csvlixir"
