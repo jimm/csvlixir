@@ -8,7 +8,7 @@ Add CSVLixir to your `mix.exs` dependencies:
 
 ```elixir
 def deps do
-  [{:csvlixir, "~> 2.0.3"}]
+  [{:csvlixir, "~> 2.0.4"}]
 end
 ```
 
