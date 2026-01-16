@@ -1,4 +1,4 @@
-Code.require_file "test_helper.exs", __DIR__
+Code.require_file("test_helper.exs", __DIR__)
 
 defmodule CSVLixirTest do
   use ExUnit.Case
@@ -23,7 +23,7 @@ defmodule CSVLixirTest do
     IO.write(f, "abc\ndef")
     File.close(f)
 
-    answer = CSVLixir.read(path) |> Enum.to_list
+    answer = CSVLixir.read(path) |> Enum.to_list()
     File.rm(path)
 
     assert answer == [["abc"], ["def"]]
@@ -35,15 +35,15 @@ defmodule CSVLixirTest do
     IO.write(f, "abc\ndéf")
     File.close(f)
 
-    answer = CSVLixir.read(path) |> Enum.to_list
+    answer = CSVLixir.read(path) |> Enum.to_list()
     File.rm(path)
 
     assert answer == [["abc"], ["déf"]]
   end
 
   test "write list of lists" do
-    assert CSVLixir.write([[123, 456], ["abc", "def"]]) |> Enum.to_list ==
-      ["123,456\n", "abc,def\n"]
+    assert CSVLixir.write([[123, 456], ["abc", "def"]]) |> Enum.to_list() ==
+             ["123,456\n", "abc,def\n"]
   end
 
   test "write list of values => write_row" do

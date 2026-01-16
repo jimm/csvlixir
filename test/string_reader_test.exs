@@ -7,6 +7,6 @@ defmodule CSVStringReaderTest do
 
   # Compare parsed @test_input with @test_expected.
   test "reader" do
-    assert CSVLixir.StringReader.read(TestHelper.test_input) == TestHelper.test_expected
+    assert CSVLixir.StringReader.read(TestHelper.test_input()) == TestHelper.test_expected()
   end
 end

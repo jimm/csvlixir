@@ -3,8 +3,20 @@ defmodule CSVWriterTest do
 
   @test_input [
     ["row one", "\"nasty:,\"", "has, comma", "has \"quotes\"", "has 'single quotes'"],
-    ["has \"comma, in quotes\"", "has 'comma, in single quotes'", "quotes \",\" surrounding", "", ""],
-    ["odd \"number of\" double \"quotes", "two, yes two, commas", "two, \"commas, second\" in quotes", "", ""],
+    [
+      "has \"comma, in quotes\"",
+      "has 'comma, in single quotes'",
+      "quotes \",\" surrounding",
+      "",
+      ""
+    ],
+    [
+      "odd \"number of\" double \"quotes",
+      "two, yes two, commas",
+      "two, \"commas, second\" in quotes",
+      "",
+      ""
+    ],
     ["simple", "row", "internal \"quote", "", ""]
   ]
 
@@ -18,8 +30,8 @@ defmodule CSVWriterTest do
   ]
 
   test "row writer" do
-    both = Enum.zip @test_input, @test_expected
-    Enum.each both, fn({input, expected}) -> write_row_test(input, expected) end
+    both = Enum.zip(@test_input, @test_expected)
+    Enum.each(both, fn {input, expected} -> write_row_test(input, expected) end)
   end
 
   def write_row_test(input, expected) do

@@ -1,5 +1,4 @@
 defmodule CSVLixir.IOReader do
-
   @moduledoc """
   Reads characters from a device and returns a Stream of lists of strings.
 
@@ -28,37 +27,46 @@ defmodule CSVLixir.IOReader do
   end
 
   defp read_row(_, :eof, row), do: {Enum.reverse(row), :eof}
+
   defp read_row(io, c, row) do
     case read_item(io, c) do
-      {item, next_char, :eol} -> {Enum.reverse([item|row]), next_char}
-      {item, _,         :eof} -> {Enum.reverse([item|row]), :eof}
-      {item, next_char, :ok}  -> read_row(io, next_char, [item|row])
+      {item, next_char, :eol} -> {Enum.reverse([item | row]), next_char}
+      {item, _, :eof} -> {Enum.reverse([item | row]), :eof}
+      {item, next_char, :ok} -> read_row(io, next_char, [item | row])
     end
-  end    
+  end
 
   defp read_item(io, ","), do: {"", getc(io), :ok}
   defp read_item(io, "\""), do: read_item_quoted(io, getc(io), "")
   defp read_item(io, "\n"), do: {"", getc(io), :eol}
+
   defp read_item(io, "\r") do
     c = getc(io)
+
     case c do
       "\n" -> {"", getc(io), :eol}
       ch -> {"", ch, :eol}
     end
   end
+
   defp read_item(io, c), do: read_item(io, getc(io), c)
 
   defp read_item(_, :eof, col), do: {col, :eof, :eof}
   defp read_item(io, ",", col), do: {col, getc(io), :ok}
   defp read_item(io, "\n", col), do: {col, getc(io), :eol}
+
   defp read_item(io, "\r", col) do
     c = getc(io)
+
     case c do
       "\n" ->
         {col, getc(io), :eol}
-      ch -> {col, ch, :eol}
+
+      ch ->
+        {col, ch, :eol}
     end
   end
+
   defp read_item(io, c, col), do: read_item(io, getc(io), col <> c)
 
   defp read_item_quoted(io, "\"", col) do
@@ -69,6 +77,7 @@ defmodule CSVLixir.IOReader do
       _ -> {col, getc(io), :ok}
     end
   end
+
   defp read_item_quoted(io, c, col), do: read_item_quoted(io, getc(io), col <> c)
 
   # This is a convenient place to put print statements when debugging.

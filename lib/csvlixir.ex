@@ -1,5 +1,4 @@
 defmodule CSVLixir do
-
   @moduledoc """
 
   Reads or writes CSV data. The reader reads a file or a list strings
